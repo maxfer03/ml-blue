@@ -1,19 +1,18 @@
-let blueVal = localStorage.getItem('blue_usd_val')
 
-const calculateBlue = (container, ars) => {
-  if(!container.querySelector('.blue-price') && !container.textContent.includes('U$S')) {
-    let bluePrice = document.createElement('span')
-    bluePrice.classList.add('blue-price')
-    bluePrice.textContent = `U$S ${(ars / blueVal).toLocaleString(undefined, {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2
-    })}`
-    container.appendChild(bluePrice)
+
+const injectBlue = (blueVal) => {
+  
+  const calculateBlue = (container, ars) => {
+    if(!container.querySelector('.blue-price') && !container.textContent.includes('U$S')) {
+      let bluePrice = document.createElement('span')
+      bluePrice.classList.add('blue-price')
+      bluePrice.textContent = `U$S ${(ars / blueVal).toLocaleString(undefined, {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      })}`
+      container.appendChild(bluePrice)
+    }
   }
-}
-
-const injectBlue = () => {
-
   // Catalogue containers
   const priceContainerList = document.querySelectorAll('.ui-card-ml-price')
   const polyPriceContainerList = document.querySelectorAll('.poly-price')
@@ -70,7 +69,11 @@ const targetNode = document.body;
 const observer = new MutationObserver((mutationsList, observer) => {
   for (const mutation of mutationsList) {
     if (mutation.type === 'childList') {
-        injectBlue()
+        let blue = localStorage.getItem('blue_usd_val')
+        while(!blue) {
+          return
+        }
+        injectBlue(blue)
     }
   }
 });
