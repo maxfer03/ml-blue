@@ -1,0 +1,73 @@
+
+:root {
+  --dollar-green: #278664;
+  --ml-bg-gray: #e7e7e7;
+}
+
+.ml-dolar-container {
+  position: fixed;
+  bottom: 25px;
+  left: 15px;
+  z-index: 100;
+  pointer-events: none;
+  @media (min-width: 1024px) {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 100px;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+  }
+
+}
+
+.ml-dolar {
+  background: var(--ml-bg-gray);
+  border-radius: 1rem;
+  padding: 5px 10px;
+  color: var(--dollar-green);
+  font-weight: 600;
+  pointer-events: all;
+  text-decoration: none;
+  transition: all 200ms ease-in-out;
+  text-align: center;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+  @media (min-width: 1024px) {
+    box-shadow: none;
+    background: white;
+  }
+}
+
+.ml-dolar:hover, .ml-dolar:focus {
+  background: var(--dollar-green);
+  color: var(--ml-bg-gray);
+  transform: scale(1.1);
+  @media (min-width: 1024px) {
+    color: white;
+  }
+}
+
+.blue-price {
+  font-weight: 600;
+  color: var(--dollar-green);
+}
+
+
+
+/* style changes to ML's ui: */
+.dynamic-carousel__price-block {
+  @media (min-width: 1024px) {
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+}
+
+.ui-pdp-price__subtitles {
+  margin-bottom: 15px;
+}
+
+.ui-recommendations-card__installments {
+  margin-bottom: 3px;
+}

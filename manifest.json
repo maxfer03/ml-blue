@@ -1,0 +1,26 @@
+{
+  "name": "Mercado Blue",
+  "version": "0.0.1",
+  "description": "Pesos to blue converter",
+  "manifest_version": 3,
+  "author": "Max",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.mercadolibre.com.ar/*"
+      ],
+      "exclude_matches": [],
+      "run_at": "document_idle",
+      "js": [
+        "js/onStart.js",
+        "js/blue.js"
+      ],
+      "css": [
+        "css/styles.css"
+      ]
+    }
+  ],
+  "permissions": [
+    "storage"
+  ]
+}
